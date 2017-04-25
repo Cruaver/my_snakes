@@ -8,7 +8,6 @@ int main(int argc, char *argv[]) {
     int xmax;
     int ymax;
     enum Direction dir = RIGHT;
-    enum Status status = "";
 
     initscr();
     cbreak();
@@ -30,8 +29,9 @@ int main(int argc, char *argv[]) {
         display_points(game->foods, ACS_DIAMOND);
         refresh();
         dir = get_next_move(dir);
-        Status status = move_snake(game, dir);
+        enum Status status = move_snake(game, dir);
         if (status == FAILURE) break;
+
     }
     endwin();
 
