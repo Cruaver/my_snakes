@@ -29,9 +29,11 @@ all         :	 $(NAME)
 $(NAME)     :	 $(OBJS)
 		         $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
-clean       :    $(RM) $(OBJS)
+clean       :
+                 $(RM) $(OBJS)
 
-fclean      :	 clean
+fclean      :
+                 clean
 		         $(RM) $(NAME) *~
 
 re          :    fclean all
