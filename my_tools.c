@@ -1,7 +1,3 @@
-//
-// Created by Charbel KABRO on 25/04/2017.
-//
-
 #include <unistd.h>
 
 int my_putchar(char c) {
