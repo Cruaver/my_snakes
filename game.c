@@ -72,21 +72,21 @@ PointList* next_move(Game* game, enum Direction dir) {
   PointList *snake;
   int new_x;
   int new_y;
-  new_x = snake.x;
-  new_y = snake.y;
+  new_x = snake->x;
+  new_y = snake->y;
   snake = game.snake;
   switch(dir) {
     case UP:
-      new_y = snake.y - 1;
+      new_y = snake->y - 1;
       break;
     case DOWN:
-      new_y = snake.y + 1;
+      new_y = snake->y + 1;
       break;
     case LEFT:
-      new_x = snake.x - 1;
+      new_x = snake->x - 1;
       break;
     case RIGHT:
-      new_x = snake.x + 1;
+      new_x = snake->x + 1;
       break;
   }
   if (new_x < 0 || new_y < 0 || new_x >= game->xmax || new_y >= game->ymax) {
