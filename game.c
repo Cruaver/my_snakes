@@ -74,7 +74,7 @@ PointList* next_move(Game* game, enum Direction dir) {
   int new_y;
   new_x = snake->x;
   new_y = snake->y;
-  snake = game.snake;
+  snake = game->snake;
   switch(dir) {
     case UP:
       new_y = snake->y - 1;
