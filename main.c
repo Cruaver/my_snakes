@@ -7,7 +7,8 @@ int main(int argc, char *argv[]) {
 
     int xmax;
     int ymax;
-    enum Direction dir = RIGHT;
+    enum Direction;
+    enum Status;
 
     initscr();
     cbreak();
@@ -16,6 +17,7 @@ int main(int argc, char *argv[]) {
     curs_set(0);
     timeout(10);
 
+    Direction dir = RIGHT;
     getmaxyx(stdscr, ymax, xmax);
     Game *game = create_game(create_snake(), NULL, xmax, ymax);
     int i;
