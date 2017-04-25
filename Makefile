@@ -10,8 +10,6 @@
 
 NAME        =    my_Snake
 
-RM          = 	 rm -f
-
 CC          = 	 gcc
 
 
@@ -29,10 +27,10 @@ all         :	 $(NAME)
 $(NAME)     :	 $(OBJS)
 		         $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
-clean       :    $(RM) $(OBJS)
+clean       :    rm -f $(OBJS)
 
 fclean      :    clean
-				 $(RM) $(NAME) *~
+				 rm -f $(NAME) *~
 
 re          :    fclean all
 
