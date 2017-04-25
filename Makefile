@@ -8,33 +8,31 @@
 ## Last update Wed Mar 22 08:44:51 2017 KABRO charbel
 ##
 
-NAME   	    =    my_Snake
+NAME        =    my_Snake
 
-RM		    = 	 rm -f
+RM          = 	 rm -f
 
-CC		    = 	 gcc
+CC          = 	 gcc
 
 
-CFLAGS		= 	 -lncurses -Wall -Werror -Wpedantic -fPIC
+CFLAGS      = 	 -lncurses -Wall -Werror -Wpedantic -fPIC
 
-SRCS		=	 main.c     \
+SRCS        =	 main.c     \
                  game.c     \
                  my_tools.c \
-                 ncurse.c   \
+                 ncurse.c
 
-OBJS	    =	 $(SRC:.c=.o)
+OBJS        =	 $(SRC:.c=.o)
 
 all         :	 $(NAME)
 
 $(NAME)     :	 $(OBJS)
 		         $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
-clean       :
-                 $(RM) $(OBJS)
+clean       :    $(RM) $(OBJS)
 
-fclean      :
-                 clean
-		         $(RM) $(NAME) *~
+fclean      :    clean
+				 $(RM) $(NAME) *~
 
 re          :    fclean all
 
