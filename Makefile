@@ -12,25 +12,26 @@ NAME        =    my_Snake
 
 CC          = 	 gcc
 
+RM          =    rm -f
 
 CFLAGS      = 	 -lncurses -Wall -Werror -Wpedantic -fPIC
 
-SRCS        =	 main.c     \
+SRC         =	 main.c     \
                  game.c     \
                  my_tools.c \
                  ncurse.c
 
-OBJS        =	 $(SRC:.c=.o)
+OBJ         =	 $(SRC:.c=.o)
 
 all         :	 $(NAME)
 
-$(NAME)     :	 $(OBJS)
-		         $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
+$(NAME)     :	 $(OBJ)
+		         $(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
-clean       :    rm -f $(OBJS)
+clean       :    $(RM) $(OBJ)
 
 fclean      :    clean
-				 rm -f $(NAME) *~
+				 $(RM) $(NAME) *~
 
 re          :    fclean all
 
