@@ -26,7 +26,10 @@ bool remove_from_list(PointList* elt, PointList** list) {
 }
 
 enum Status move_snake(Game* game, enum Direction dir) {
-  PointList* beginning = next_move(game, dir);
+  PointList* end;
+  PointList* beginning;
+
+  beginning = next_move(game, dir);
   if (beginning == NULL) {
       return FAILURE;
   }
@@ -50,7 +53,7 @@ enum Status move_snake(Game* game, enum Direction dir) {
   beginning->next = game->snake;
   game->snake = beginning;
 
-  PointList* end = game->snake;
+    end = game->snake;
   while(end->next->next) {
     end = end->next;
   }
