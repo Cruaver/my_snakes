@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     int xmax;
     int ymax;
     enum Direction dir = RIGHT;
-    enum Status status = move_snake(game, dir);
+    enum Status status = "";
 
     initscr();
     cbreak();
