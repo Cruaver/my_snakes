@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
 
     int xmax;
     int ymax;
+    int i;
     enum Direction dir;
     enum Status status;
     Game * game;
@@ -21,7 +22,6 @@ int main(int argc, char *argv[]) {
     dir = RIGHT;
     getmaxyx(stdscr, ymax, xmax);
     game = create_game(create_snake(), NULL, xmax, ymax);
-    int i;
     for (i = 0; i < 6; i++) {
         add_new_food(game);
     }
