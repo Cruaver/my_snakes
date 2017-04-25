@@ -26,27 +26,20 @@ bool remove_from_list(PointList* elt, PointList** list) {
 }
 
 enum Status move_snake(Game* game, enum Direction dir) {
-  // Create a new beginning. Check boundaries.
   PointList* beginning = next_move(game, dir);
   if (beginning == NULL) {
-    return FAILURE;
+      return FAILURE;
   }
-
-  // If we've gone backwards, don't do anything
   if (game->snake->next && is_same_place(beginning, game->snake->next)) {
     beginning->next = NULL;
     free(beginning);
     return SUCCESS;
   }
-
-  // Check for collisions
   if (list_contains(beginning, game->snake)) {
     return FAILURE;
   }
 
-  // Check for food
   if (list_contains(beginning, game->foods)) {
-    // Attach the beginning to the rest of the snake;
     beginning->next = game->snake;
     game->snake = beginning;
     remove_from_list(beginning, &(game->foods));
@@ -54,13 +47,9 @@ enum Status move_snake(Game* game, enum Direction dir) {
 
     return SUCCESS;
   }
-
-  // Attach the beginning to the rest of the snake
   beginning->next = game->snake;
   game->snake = beginning;
 
-
-  // Cut off the end
   PointList* end = game->snake;
   while(end->next->next) {
     end = end->next;
@@ -77,9 +66,12 @@ bool is_same_place(PointList* cell1, PointList* cell2) {
 
 
 PointList* next_move(Game* game, enum Direction dir) {
-  PointList* snake = game->snake;
-  int new_x = snake->x;
-  int new_y = snake->y;
+  PointList * snake;
+  int new_x;
+  int new_y;
+  new_x = snake->x;
+  new_y = snake->y;
+  snake = game->snake;
   switch(dir) {
     case UP:
       new_y = snake->y - 1;
