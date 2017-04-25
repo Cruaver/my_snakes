@@ -1,8 +1,10 @@
-#include "backend.h"
-#include "frontend.h"
+#include "game.h"
+#include "ncurse.h"
 #include <ncurses.h>
+#include "my_tools.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+
     initscr();
     cbreak();
     noecho();
@@ -10,12 +12,20 @@ int main() {
     curs_set(0);
     timeout(100);
 
+    if (argc < 0) {
+
+        endwin();
+
+
+
+    }
+
     int xmax;
     int ymax;
     getmaxyx(stdscr, ymax, xmax);
     enum Direction dir = RIGHT;
 
-    Game *game = create_board(create_snake(), NULL, xmax, ymax);
+    Game *game = create_game(create_snake(), NULL, xmax, ymax);
     int i;
     for (i = 0; i < 6; i++) {
         add_new_food(game);

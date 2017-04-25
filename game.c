@@ -1,4 +1,5 @@
-#include "backend.h"
+#include "game.h"
+#include "my_tools.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -132,7 +133,7 @@ PointList* create_cell(int x, int y) {
   return cell;
 }
 
-Game* create_board(PointList* snake, PointList* foods, int xmax, int ymax) {
+Game* create_game(PointList* snake, PointList* foods, int xmax, int ymax) {
   Game* game = malloc(sizeof(*game));
   game->foods = foods;
   game->snake = snake;

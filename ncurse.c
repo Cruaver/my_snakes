@@ -1,6 +1,7 @@
 #include <ncurses.h>
-#include "backend.h"
-#include "frontend.h"
+#include "game.h"
+#include "ncurse.h"
+#include "my_tools.h"
 
 void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
