@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     int ymax;
     enum Direction dir;
     enum Status status;
-    Game game;
+    Game * game;
 
     initscr();
     cbreak();
