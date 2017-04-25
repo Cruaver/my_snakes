@@ -26,7 +26,7 @@ typedef struct {
 } Game;
 
 
-bool is_same_place(PointList *cell1, PointList *cell2);
+int is_same_place(PointList *cell1, PointList *cell2);
 
 enum Status move_snake(Game *game, enum Direction dir);
 
@@ -40,9 +40,9 @@ PointList *create_snake();
 
 Game *create_game(PointList *foods, PointList *snake, int xmax, int ymax);
 
-bool list_contains(PointList *cell, PointList *list);
+int list_contains(PointList *cell, PointList *list);
 
-bool remove_from_list(PointList *elt, PointList **list);
+int remove_from_list(PointList *elt, PointList **list);
 
 void add_new_food(Game *game);
 

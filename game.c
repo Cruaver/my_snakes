@@ -5,24 +5,24 @@
 #include <stdbool.h>
 #include <time.h>
 
-bool remove_from_list(PointList *elt, PointList **list) {
+int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
     prevP = NULL;
 
     for (currP = *list;
          currP != NULL;
          prevP = currP, currP = currP->next) {
-        if (is_same_place(currP, elt)) {
+        if (is_same_place(currP, elt) == 1) {
             if (prevP == NULL) {
                 *list = currP->next;
             } else {
                 prevP->next = currP->next;
             }
             free(currP);
-            return true;
+            return 0;
         }
     }
-    return false;
+    return 1;
 }
 
 enum Status move_snake(Game *game, enum Direction dir) {
@@ -33,16 +33,16 @@ enum Status move_snake(Game *game, enum Direction dir) {
     if (beginning == NULL) {
         return FAILURE;
     }
-    if (game->snake->next && is_same_place(beginning, game->snake->next)) {
+    if (game->snake->next && is_same_place(beginning, game->snake->next) == 1) {
         beginning->next = NULL;
         free(beginning);
         return SUCCESS;
     }
-    if (list_contains(beginning, game->snake)) {
+    if (list_contains(beginning, game->snake) == 1) {
         return FAILURE;
     }
 
-    if (list_contains(beginning, game->foods)) {
+    if (list_contains(beginning, game->foods) == 1) {
         beginning->next = game->snake;
         game->snake = beginning;
         remove_from_list(beginning, &(game->foods));
@@ -63,8 +63,11 @@ enum Status move_snake(Game *game, enum Direction dir) {
     return SUCCESS;
 }
 
-bool is_same_place(PointList *cell1, PointList *cell2) {
-    return cell1->x == cell2->x && cell1->y == cell2->y;
+int is_same_place(PointList *cell1, PointList *cell2) {
+    if (cell1->x == cell2->x && cell1->y == cell2->y){
+        return 0;
+    }
+    return 1;
 }
 
 
@@ -104,20 +107,20 @@ void add_new_food(Game *game) {
     PointList *new_food;
     do {
         new_food = create_random_cell(game->xmax, game->ymax);
-    } while (list_contains(new_food, game->foods) || list_contains(new_food, game->snake));
+    } while (list_contains(new_food, game->foods) == 1 || list_contains(new_food, game->snake) == 1);
     new_food->next = game->foods;
     game->foods = new_food;
 }
 
-bool list_contains(PointList *cell, PointList *list) {
+int list_contains(PointList *cell, PointList *list) {
     PointList *s = list;
     while (s) {
-        if (is_same_place(s, cell)) {
-            return true;
+        if (is_same_place(s, cell) == 1) {
+            return 0;
         }
         s = s->next;
     }
-    return false;
+    return 1;
 }
 
 PointList *create_cell(int x, int y) {
