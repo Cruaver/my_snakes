@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     enum Direction dir;
     enum Status status;
     Game * game;
-    WINDOW *boite;
+    WINDOW * boite;
 
     initscr();
     cbreak();
@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
     curs_set(0);
     timeout(10);
     boite= subwin(stdscr, 10, 10, LINES / 2, COLS /2);
-    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
-    wrefresh(boite);
+    box(boite, ACS_VLINE, ACS_HLINE);
+    refresh();
 
 
     dir = RIGHT;
