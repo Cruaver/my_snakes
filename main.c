@@ -21,6 +21,9 @@ int main(int argc, char *argv[]) {
     curs_set(0);
     timeout(10);
     getmaxyx(stdscr, ymax, xmax);
+    boite = subwin(stdscr, LINES, COLS, 0, 0);
+    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
+    wrefresh(boite);
 
     dir = RIGHT;
     game = create_game(create_snake(), NULL, xmax, ymax);
