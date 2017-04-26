@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
     dir = RIGHT;
     getmaxyx(stdscr, ymax, xmax);
-    game = create_game(create_snake(), NULL, xmax, ymax);
+    game = create_game(create_snake(), NULL, xmax / 2, ymax / 2);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
     }
