@@ -20,13 +20,13 @@ int main(int argc, char *argv[]) {
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(10);
+    getmaxyx(stdscr, ymax, xmax);
     boite= subwin(stdscr, 10, 10, LINES / 2, COLS /2);
     box(boite, ACS_VLINE, ACS_HLINE);
     refresh();
 
 
     dir = RIGHT;
-    getmaxyx(stdscr, ymax, xmax);
     game = create_game(create_snake(), NULL, xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(game);

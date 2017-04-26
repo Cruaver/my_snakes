@@ -4,10 +4,13 @@
 
 int main(int argc, char *argv[]) {
 
+    int xmax;
+    int ymax;
     WINDOW * boite;
 
+    getmaxyx(stdscr, ymax, xmax);
     initscr();
-    boite = subwin(stdscr, 10, 10, 10 / 2, 10 /2);
+    boite = subwin(stdscr, 10, 10, ymax, xmax);
 
     box(boite, ACS_VLINE, ACS_HLINE);
     refresh();
