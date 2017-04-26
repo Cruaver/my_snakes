@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
     getmaxyx(stdscr, ymax, xmax);
     initscr();
-    boite = subwin(stdscr, 10, 10, ymax, xmax);
+    boite = subwin(stdscr, 10, 10, ymax / 2, xmax / 2);
 
     box(boite, ACS_VLINE, ACS_HLINE);
     refresh();
