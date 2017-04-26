@@ -22,8 +22,6 @@ int main(int argc, char *argv[]) {
     timeout(10);
     getmaxyx(stdscr, ymax, xmax);
     boite = subwin(stdscr, LINES - 2, COLS - 2, 0, 0);
-    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
-    wrefresh(boite);
 
     dir = RIGHT;
     game = create_game(create_snake(), NULL, xmax, ymax);
@@ -33,8 +31,9 @@ int main(int argc, char *argv[]) {
 
     while (true) {
         clear();
-        display_points(game->snake, ACS_BLOCK, boite);
-        display_points(game->foods, ACS_DIAMOND, boite);
+        display_points(game->snake, ACS_BLOCK);
+        display_points(game->foods, ACS_DIAMOND);
+        wrefresh(boite);
         refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
