@@ -5,6 +5,9 @@
 
 void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
+        boite= subwin(stdscr, LINES , COLS , 0, 0);
+        wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
+        wrefresh(boite);
         mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
