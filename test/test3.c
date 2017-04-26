@@ -6,9 +6,9 @@ int main(int argc, char *argv[]) {
     WINDOW *boite;
 
     initscr();
-    boite= subwin(stdscr, 10, 10, LINES / 2, COLS /2);
+    boite= subwin(stdscr, 1, 1, LINES , COLS);
 
-    box(boite, ACS_VLINE, ACS_HLINE); // ACS_VLINE et ACS_HLINE sont des constantes qui génèrent des bordures par défaut
+    box(boite, ACS_VLINE, ACS_HLINE);
     refresh();
 
     getch();
