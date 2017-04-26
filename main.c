@@ -2,6 +2,7 @@
 #include "ncurse.h"
 #include <ncurses.h>
 #include "my_tools.h"
+#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
 
