@@ -30,8 +30,8 @@ int main(int argc, char *argv[]) {
 
     while (true) {
         clear();
-        display_points(game->snake, ACS_BLOCK);
-        display_points(game->foods, ACS_DIAMOND);
+        display_points(game->snake, ACS_BLOCK, boite);
+        display_points(game->foods, ACS_DIAMOND, boite);
         refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
