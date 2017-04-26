@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     WINDOW *boite;
 
     initscr();
-    boite= subwin(stdscr, LINES, COLS, 0, 0);
+    boite= subwin(stdscr, LINES , COLS, 0, 0);
     wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
     wrefresh(boite);
     refresh();

@@ -21,8 +21,9 @@ int main(int argc, char *argv[]) {
     curs_set(0);
     timeout(10);
     getmaxyx(stdscr, ymax, xmax);
-    boite= subwin(stdscr, 10, 10, LINES / 2, COLS /2);
-    box(boite, ACS_VLINE, ACS_HLINE);
+    boite= subwin(stdscr, LINES , COLS, 0, 0);
+    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
+    wrefresh(boite);
     refresh();
 
 
