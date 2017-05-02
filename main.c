@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(10);
-    boite = subwin(stdscr, LINES - 2, COLS - 2, 0, 0);
+    boite = subwin(stdscr, 10, 10, 0, 0);
 
     dir = RIGHT;
     xmax = 10;
