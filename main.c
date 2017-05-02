@@ -14,15 +14,17 @@ int main(int argc, char *argv[]) {
     Game * game;
     WINDOW * boite;
 
+
+    xmax = 10;
+    ymax = 10;
     initscr();
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(10);
-    boite = subwin(stdscr, 10, 10, 0, 0);
+    boite = subwin(stdscr, xmax, ymax, 0, 0);
+    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
 
     dir = RIGHT;
-    xmax = 10;
-    ymax = 10;
     game = create_game(create_snake(), NULL, xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
