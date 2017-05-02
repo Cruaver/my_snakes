@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     boite = subwin(stdscr, LINES - 2, COLS - 2, 0, 0);
 
     dir = RIGHT;
-    game = create_game(create_snake(), NULL, xmax, ymax);
+    game = create_game(create_snake(), NULL, 10, 10);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
     }
@@ -37,11 +37,10 @@ int main(int argc, char *argv[]) {
         refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
-        if (status == FAILURE) break;
-
+        if (status == FAILURE)
+            break;
     }
     endwin();
     free(boite);
-
     return 0;
 }
