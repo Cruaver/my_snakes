@@ -27,12 +27,11 @@ int main(int argc, char *argv[]) {
         display_points(game->snake, ACS_BLOCK);
         display_points(game->foods, ACS_DIAMOND);
         refresh();
-        dir = get_next_move(Direction * direction);
+        direction = get_next_move(Direction * direction);
         status = move_snake(game,  * direction);
-        if (status == FAILURE)
+        if (status == "FAILURE")
             break;
     }
     endwin();
-    free(boite);
     return 0;
 }
