@@ -9,7 +9,7 @@ void display_points(PointList *snake, const chtype symbol) {
     }
 }
 
-enum Direction get_next_move(Direction * previous) {
+enum Direction get_next_move(enum Direction previous) {
     int ch = getch();
     switch (ch) {
         case KEY_LEFT:
