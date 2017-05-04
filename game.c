@@ -1,5 +1,4 @@
 #include "game.h"
-#include "my_tools.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

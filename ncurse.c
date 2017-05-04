@@ -1,11 +1,10 @@
 #include <ncurses.h>
 #include "game.h"
 #include "ncurse.h"
-#include "my_tools.h"
 
 void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
-        mvaddch(snake->y, snake->x, const chtype symbol);
+        mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
 }
