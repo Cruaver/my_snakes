@@ -1,18 +1,16 @@
 #ifndef GAME_H_
 # define GAME_H_
 
-enum Direction {
-    UP, DOWN, LEFT, RIGHT
-};
-enum Status {
-    SUCCESS, FAILURE
-};
-
 struct PointList {
     int x;
     int y;
     struct PointList *next;
 };
+
+typedef struct Direction {
+    char * direction;
+    char * previous;
+} Direction;
 
 typedef struct PointList PointList;
 
@@ -26,9 +24,9 @@ typedef struct {
 
 int is_same_place(PointList *cell1, PointList *cell2);
 
-enum Status move_snake(Game *game, enum Direction dir);
+char * move_snake(Game *game, Direction * direction);
 
-PointList *next_move(Game *game, enum Direction dir);
+PointList *next_move(Game *game, Direction * direction);
 
 PointList *create_cell(int x, int y);
 

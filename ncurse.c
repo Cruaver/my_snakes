@@ -5,12 +5,12 @@
 
 void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
-        mvaddch(snake->y, snake->x, symbol);
+        mvaddch(snake->y, snake->x, const chtype symbol);
         snake = snake->next;
     }
 }
 
-enum Direction get_next_move(enum Direction previous) {
+enum Direction get_next_move(Direction * previous) {
     int ch = getch();
     switch (ch) {
         case KEY_LEFT:

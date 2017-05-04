@@ -24,11 +24,11 @@ int remove_from_list(PointList * elt, PointList ** list) {
     return 1;
 }
 
-enum Status move_snake(Game * game, enum Direction dir) {
+char * move_snake(Game * game, Direction *direction){
     PointList *end;
     PointList *beginning;
 
-    beginning = next_move(game, dir);
+    beginning = next_move(game, *direction);
     if (beginning == NULL) {
         return FAILURE;
     }
@@ -70,7 +70,7 @@ int is_same_place(PointList * cell1, PointList * cell2) {
 }
 
 
-PointList * next_move(Game * game, enum Direction dir) {
+PointList * next_move(Game * game, Direction *direction) {
     PointList *snake;
     int new_x;
     int new_y;
