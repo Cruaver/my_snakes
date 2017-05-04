@@ -8,6 +8,8 @@ int main(int argc, char *argv[]) {
     int xmax;
     int ymax;
     int i;
+    enum Direction dir;
+    enum Status status;
 
     Game *game;
 
@@ -16,7 +18,7 @@ int main(int argc, char *argv[]) {
     getmaxyx(stdscr, ymax, xmax);
     curs_set(0);
     timeout(10);
-    enum Direction dir = RIGHT;
+    dir = RIGHT;
     game = create_game(create_snake(), NULL, xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
@@ -28,7 +30,7 @@ int main(int argc, char *argv[]) {
         display_points(game->foods, ACS_DIAMOND);
         refresh();
         dir = get_next_move(dir);
-        enum Status status = move_snake(game, dir);
+        status = move_snake(game, dir);
         if (status == FAILURE)
             break;
     }
