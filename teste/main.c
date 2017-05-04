@@ -9,6 +9,7 @@ int main() {
     int ymax;
     enum Direction dir;
     enum Status status;
+    Board * board;
 
     initscr();
     cbreak();
@@ -18,7 +19,7 @@ int main() {
     timeout(100);
     getmaxyx(stdscr, ymax, xmax);
     dir = RIGHT;
-    Board * board = create_board(create_snake(), NULL, xmax, ymax);
+    board = create_board(create_snake(), NULL, xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(board);
     }
