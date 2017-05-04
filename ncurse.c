@@ -12,19 +12,19 @@ void display_points(PointList *snake, const chtype symbol) {
 char *get_next_move(Direction *dir) {
     int ch = getch();
     if (ch == KEY_LEFT) {
-        if (dir->previous != "RIGHT")
+        if (dir.previous != "RIGHT")
             return "LEFT";
     } else if (ch == KEY_RIGHT) {
-        if (dir->previous != "LEFT")
+        if (dir.previous != "LEFT")
             return "RIGHT";
     } else if (ch == KEY_DOWN) {
-        if (dir->previous != "UP")
+        if (dir.previous != "UP")
             return "DOWN";
     } else if (ch == KEY_UP) {
-        if (dir->previous != "DOWN")
+        if (dir.previous != "DOWN")
             return "UP";
     } else
-        return dir->previous;
+        return dir.previous;
 }
 
 
