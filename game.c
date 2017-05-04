@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <time.h>
+#include "game.h"
 
 int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
