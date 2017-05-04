@@ -8,7 +8,7 @@
 ## Last update Wed Mar 22 08:44:51 2017 KABRO charbel
 ##
 
-NAME        =    my_Snake
+NAME        =    snake
 
 CC          = 	 gcc
 
