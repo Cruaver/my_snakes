@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-nt remove_from_list(PointList *elt, PointList **list) {
+int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
     prevP = NULL;
 
