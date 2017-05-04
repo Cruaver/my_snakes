@@ -1,5 +1,3 @@
-#include <stdbool.h>
-
 enum Direction {
     UP, DOWN, LEFT, RIGHT
 };
