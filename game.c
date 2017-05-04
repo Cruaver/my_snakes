@@ -20,21 +20,21 @@ int remove_from_list(PointList *maillon, PointList **list) {
     return 1;
 }
 
-char *move_snake(Game *game, Direction *dir) {
+enum Status move_snake(Game *game, enum Direction dir) {
     PointList *end;
     PointList *beginning;
 
     beginning = next_move(game, dir->direction);
-    if (beginning == "NULL") {
-        return "FAILURE";
+    if (beginning == NULL) {
+        return FAILURE;
     }
     if (game->snake->next && is_same_place(beginning, game->snake->next) == 1) {
-        beginning->next = "NULL";
+        beginning->next = NULL;
         free(beginning);
-        return "SUCCESS";
+        return SUCCESS;
     }
     if (list_contains(beginning, game->snake) == 1) {
-        return "FAILURE";
+        return FAILURE;
     }
 
     if (list_contains(beginning, game->foods) == 1) {
@@ -43,7 +43,7 @@ char *move_snake(Game *game, Direction *dir) {
         remove_from_list(beginning, &(game->foods));
         add_new_food(game);
 
-        return "SUCCESS";
+        return SUCCESS;
     }
     beginning->next = game->snake;
     game->snake = beginning;
@@ -55,7 +55,7 @@ char *move_snake(Game *game, Direction *dir) {
     free(end->next);
     end->next = NULL;
 
-    return "SUCCESS";
+    return SUCCESS;
 }
 
 int is_same_place(PointList *cell1, PointList *cell2) {
@@ -65,23 +65,24 @@ int is_same_place(PointList *cell1, PointList *cell2) {
 }
 
 
-PointList *next_move(Game *game, Direction *dir) {
+PointList *next_move(Game *game,  enum Direction dir) {
     PointList *snake;
     int new_x;
     int new_y;
     snake = game->snake;
     new_x = snake->x;
     new_y = snake->y;
-    if (dir->direction == "UP")
+    if (dir == UP)
         new_y = snake->y - 1;
-    else if (dir->direction == "DOWN")
+    else if (dir == DOWN)
         new_y = snake->y + 1;
-    else if (dir->direction == "LEFT")
+    else if (dir == LEFT)
         new_x = snake->x - 1;
-    else if (dir->direction == "RIGHT")
+    else if (dir == RIGHT)
         new_x = snake->x + 1;
+
     if (new_x < 0 || new_y < 0 || new_x >= game->xmax || new_y >= game->ymax)
-        return "NULL";
+        return NULL;
     else
         return create_cell(new_x, new_y);
 }
@@ -115,7 +116,7 @@ PointList *create_cell(int x, int y) {
     PointList *cell = malloc(sizeof(*cell));
     cell->x = x;
     cell->y = y;
-    cell->next = "NULL";
+    cell->next = NULL;
     return cell;
 }
 
