@@ -1,10 +1,11 @@
-## Makefile for my_printf in /home/charbel/kabro_c/my
 ##
+## Makefile for my_snake in /home/ck/Desktop/my_snakes/teste
+## 
 ## Made by KABRO charbel
 ## Login   <kabro_c@etna-alternance.net>
-##
-## Started on  Tue Mar 21 09:44:38 2017 KABRO charbel
-## Last update Wed Mar 22 08:44:51 2017 KABRO charbel
+## 
+## Started on  Thu May  4 09:59:54 2017 KABRO charbel
+## Last update Thu May  4 10:00:41 2017 KABRO charbel
 ##
 
 NAME        =    snake
@@ -21,17 +22,17 @@ SRC         =	 main.c     \
 
 OBJS        =	 $(SRC:.c=.o)
 
-all:			 $(NAME)
+all:		 $(NAME)
 
-$(NAME):		 $(OBJS)
-				 $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
+$(NAME):	 $(OBJS)
+		 $(CC) -o $(NAME) $(OBJS) $(CFLAGS)
 
 clean:
-				 $(RM) $(OBJS)
+		 $(RM) $(OBJS)
 
-fclean:			 clean
-				 $(RM) $(NAME) *~
+fclean:		 clean
+		 $(RM) $(NAME) *~
 
-re:				 fclean all
+re:		 fclean all
 
-.PHONY: all re clean fclean
+.PHONY:		 all re clean fclean
