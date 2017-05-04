@@ -2,15 +2,14 @@
 #include "game.h"
 #include "ncurse.h"
 
-int display_points(PointList *snake, const chtype symbol) {
+void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
         mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
-    return 1;
 }
 
-enum Direction get_next_move(enum Direction previous) {
+enum Direction get_next_move(Direction * previous) {
     int ch = getch();
     switch (ch) {
         case KEY_LEFT:
