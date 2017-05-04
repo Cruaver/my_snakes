@@ -15,7 +15,7 @@ enum Direction get_next_move(enum Direction previous) {
     ch = getch();
     switch (ch) {
         case KEY_LEFT:
-            if (previous != RIGHT
+            if (previous != RIGHT)
                 return LEFT;
         case KEY_RIGHT:
             if (previous != LEFT)
