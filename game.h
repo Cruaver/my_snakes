@@ -45,3 +45,5 @@ int remove_from_list(PointList *elt, PointList **list);
 void add_new_food(Game *game);
 
 #endif
+
+#endif

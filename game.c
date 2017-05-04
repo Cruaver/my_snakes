@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-int remove_from_list(PointList * elt, PointList ** list) {
+int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
     prevP = NULL;
 
@@ -23,7 +23,7 @@ int remove_from_list(PointList * elt, PointList ** list) {
     return 1;
 }
 
-enum Status move_snake(Game * game, enum Direction dir) {
+enum Status move_snake(Game *game, enum Direction dir) {
     PointList *end;
     PointList *beginning;
 
@@ -61,15 +61,15 @@ enum Status move_snake(Game * game, enum Direction dir) {
     return SUCCESS;
 }
 
-int is_same_place(PointList * cell1, PointList * cell2) {
-    if (cell1->x == cell2->x && cell1->y == cell2->y) {
+int is_same_place(PointList *cell1, PointList *cell2) {
+    if (cell1->x == cell2->x && cell1->y == cell2->y){
         return 0;
     }
     return 1;
 }
 
 
-PointList * next_move(Game * game, enum Direction dir) {
+PointList *next_move(Game *game, enum Direction dir) {
     PointList *snake;
     int new_x;
     int new_y;
@@ -97,11 +97,11 @@ PointList * next_move(Game * game, enum Direction dir) {
     }
 }
 
-PointList * create_random_cell(int xmax, int ymax) {
+PointList *create_random_cell(int xmax, int ymax) {
     return create_cell(rand() % xmax, rand() % ymax);
 }
 
-void add_new_food(Game * game) {
+void add_new_food(Game *game) {
     PointList *new_food;
     do {
         new_food = create_random_cell(game->xmax, game->ymax);
@@ -110,8 +110,8 @@ void add_new_food(Game * game) {
     game->foods = new_food;
 }
 
-int list_contains(PointList * cell, PointList * list) {
-    PointList * s = list;
+int list_contains(PointList *cell, PointList *list) {
+    PointList *s = list;
     while (s) {
         if (is_same_place(s, cell) == 1) {
             return 0;
@@ -121,7 +121,7 @@ int list_contains(PointList * cell, PointList * list) {
     return 1;
 }
 
-PointList * create_cell(int x, int y) {
+PointList *create_cell(int x, int y) {
     PointList *cell = malloc(sizeof(*cell));
     cell->x = x;
     cell->y = y;
@@ -129,8 +129,8 @@ PointList * create_cell(int x, int y) {
     return cell;
 }
 
-Game * create_game(PointList * snake, PointList * foods, int xmax, int ymax) {
-    Game *game = malloc(sizeof(* game));
+Game *create_game(PointList *snake, PointList *foods, int xmax, int ymax) {
+    Game *game = malloc(sizeof(*game));
     game->foods = foods;
     game->snake = snake;
     game->xmax = xmax;
@@ -138,7 +138,7 @@ Game * create_game(PointList * snake, PointList * foods, int xmax, int ymax) {
     return game;
 }
 
-PointList * create_snake() {
+PointList *create_snake() {
     PointList *a = create_cell(2, 3);
     PointList *b = create_cell(2, 2);
     a->next = b;
