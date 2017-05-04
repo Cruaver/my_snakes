@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     curs_set(0);
     timeout(10);
     dir->direction = "RIGHT";
-    game = create_game(create_snake(), NULL, xmax, ymax);
+    game = create_game(create_snake(), "NULL", xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
     }

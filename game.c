@@ -25,11 +25,11 @@ char *move_snake(Game *game, Direction *dir) {
     PointList *beginning;
 
     beginning = next_move(game, dir->direction);
-    if (beginning == NULL) {
+    if (beginning == "NULL") {
         return "FAILURE";
     }
     if (game->snake->next && is_same_place(beginning, game->snake->next) == 1) {
-        beginning->next = NULL;
+        beginning->next = "NULL";
         free(beginning);
         return "SUCCESS";
     }
@@ -81,7 +81,7 @@ PointList *next_move(Game *game, Direction *dir) {
     else if (dir->direction == "RIGHT")
         new_x = snake->x + 1;
     if (new_x < 0 || new_y < 0 || new_x >= game->xmax || new_y >= game->ymax)
-        return NULL;
+        return "NULL";
     else
         return create_cell(new_x, new_y);
 }
@@ -115,7 +115,7 @@ PointList *create_cell(int x, int y) {
     PointList *cell = malloc(sizeof(*cell));
     cell->x = x;
     cell->y = y;
-    cell->next = NULL;
+    cell->next = "NULL";
     return cell;
 }
 
