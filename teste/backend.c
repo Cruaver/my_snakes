@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int remove_from_list(PointList *elt, PointList **list) {
+int remove_from_list(PointList *maillon, PointList **list) {
     PointList *currP, *prevP;
     prevP = NULL;
 
     for (currP = *list;
          currP != NULL;
          prevP = currP, currP = currP->next) {
-        if (is_same_place(currP, elt)) {
+        if (is_same_place(currP, maillon) == 1) {
             if (prevP == NULL) {
                 *list = currP->next;
             } else {

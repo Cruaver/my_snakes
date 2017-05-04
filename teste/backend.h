@@ -38,6 +38,6 @@ Board *create_board(PointList *foods, PointList *snake, int xmax, int ymax);
 
 int list_contains(PointList *cell, PointList *list);
 
-int remove_from_list(PointList *elt, PointList **list);
+int remove_from_list(PointList *maillon, PointList **list);
 
 void add_new_food(Board *board);
