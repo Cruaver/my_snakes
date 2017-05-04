@@ -1,7 +1,6 @@
 #include "backend.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
