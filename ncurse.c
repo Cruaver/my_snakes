@@ -11,7 +11,9 @@ int display_points(PointList *snake, const chtype symbol) {
 }
 
 enum Direction get_next_move(enum Direction previous) {
-    int ch = getch();
+    int ch;
+
+    ch = getch();
     if (ch == KEY_LEFT) {
         if (previous != RIGHT)
             return LEFT;
