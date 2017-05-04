@@ -9,24 +9,22 @@ void display_points(PointList *snake, const chtype symbol) {
     }
 }
 
-enum Direction get_next_move(Direction * previous) {
+char *get_next_move(Direction *dir) {
     int ch = getch();
-    switch (ch) {
-        case KEY_LEFT:
-            if (previous != RIGHT)
-                return LEFT;
-        case KEY_RIGHT:
-            if (previous != LEFT)
-                return RIGHT;
-        case KEY_DOWN:
-            if (previous != UP)
-                return DOWN;
-        case KEY_UP:
-            if (previous != DOWN)
-                return UP;
-        default:
-            return previous;
-    }
+    if (ch == KEY_LEFT) {
+        if (dir->previous != "RIGHT")
+            return "LEFT";
+    } else if (ch == KEY_RIGHT) {
+        if (dir->previous != "LEFT")
+            return "RIGHT";
+    } else if (ch == KEY_DOWN) {
+        if (dir->previous != "UP")
+            return "DOWN";
+    } else if (ch == KEY_UP) {
+        if (dir->previous != "DOWN")
+            return "UP";
+    } else
+        return dir->previous;
 }
 
 

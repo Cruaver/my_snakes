@@ -8,15 +8,15 @@ int main(int argc, char *argv[]) {
     int xmax;
     int ymax;
     int i;
-    Direction * direction;
-    Status * status;
-    Game * game;
+    Direction *dir;
+    Status *statu;
+    Game *game;
 
     initscr();
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(10);
-    direction = "RIGHT";
+    dir->direction = "RIGHT";
     game = create_game(create_snake(), NULL, xmax, ymax);
     for (i = 0; i < 6; i++) {
         add_new_food(game);
@@ -27,9 +27,9 @@ int main(int argc, char *argv[]) {
         display_points(game->snake, ACS_BLOCK);
         display_points(game->foods, ACS_DIAMOND);
         refresh();
-        direction = get_next_move(Direction * direction);
-        status = move_snake(game,  * direction);
-        if (status == "FAILURE")
+        dir->direction = get_next_move(dir->direction);
+        statu->status = move_snake(game, dir->direction);
+        if (statu->status == "FAILURE")
             break;
     }
     endwin();

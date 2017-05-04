@@ -2,9 +2,10 @@
 # define NCURSE_H_
 
 #include <ncurses.h>
+#include <game.h>
 
 
-Direction * get_next_move(Direction * previous);
+char *get_next_move(Direction *dir);
 
 void display_points(PointList *snake, const chtype symbol);
 
