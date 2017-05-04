@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         clear();
         display_points(game->snake, ACS_BLOCK);
         display_points(game->foods, ACS_DIAMOND);
-        refresh{};
+        refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
         if (status == FAILURE)
