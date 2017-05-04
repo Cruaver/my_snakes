@@ -104,11 +104,12 @@ PointList * create_random_cell(int xmax, int ymax) {
 
 void add_new_food(Game * game) {
     PointList *new_food;
-    do {
-        new_food = create_random_cell(game->xmax, game->ymax);
-    } while (list_contains(new_food, game->foods) == 1 || list_contains(new_food, game->snake) == 1);
-    new_food->next = game->foods;
-    game->foods = new_food;
+    new_food = create_random_cell(game->xmax, game->ymax);
+
+    while (list_contains(new_food, game->foods) == 1 || list_contains(new_food, game->snake) == 1) {
+        new_food->next = game->foods;
+        game->foods = new_food;
+    }
 }
 
 int list_contains(PointList * cell, PointList * list) {
