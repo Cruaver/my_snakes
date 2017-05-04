@@ -24,7 +24,7 @@ enum Status move_snake(Game *game, enum Direction dir) {
     PointList *end;
     PointList *beginning;
 
-    beginning = next_move(game, dir->direction);
+    beginning = next_move(game, dir);
     if (beginning == NULL) {
         return FAILURE;
     }
