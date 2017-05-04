@@ -18,13 +18,13 @@ enum Direction get_next_move(enum Direction previous) {
         if (previous != LEFT)
             return RIGHT;
     } else if (ch == KEY_DOWN) {
-        if (previous != "UP")
-            return "DOWN";
+        if (previous != UP)
+            return DOWN;
     } else if (ch == KEY_UP) {
-        if (previous != "DOWN")
-            return "UP";
+        if (previous != DOWN)
+            return UP;
     } else
-        return dir->previous;
+        return previous;
 }
 
 
