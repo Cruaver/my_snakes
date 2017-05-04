@@ -7,7 +7,7 @@ int display_points(PointList *snake, const chtype symbol) {
         mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
-    return 0;
+    return 1;
 }
 
 enum Direction get_next_move(enum Direction previous) {
