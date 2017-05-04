@@ -9,11 +9,13 @@ int main(int argc, char *argv[]) {
     int ymax;
     int i;
     Direction *dir;
-    Status *statu;
+    Status *stat;
+
     Game *game;
 
     initscr();
     keypad(stdscr, TRUE);
+    getmaxyx(stdscr, ymax, xmax);
     curs_set(0);
     timeout(10);
     dir->direction = "RIGHT";
@@ -28,8 +30,8 @@ int main(int argc, char *argv[]) {
         display_points(game->foods, ACS_DIAMOND);
         refresh();
         dir->direction = get_next_move(dir->direction);
-        statu->status = move_snake(game, dir->direction);
-        if (statu->status == "FAILURE")
+        stat->status = move_snake(game, dir->direction);
+        if (stat->status == "FAILURE")
             break;
     }
     endwin();

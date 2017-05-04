@@ -18,7 +18,8 @@ CFLAGS      = 	 -lncurses -Wall -Werror -Wpedantic
 
 SRC         =	 main.c     \
                  game.c     \
-                 ncurse.c
+                 ncurse.c	\
+                 my_tools.c
 
 OBJS        =	 $(SRC:.c=.o)
 
