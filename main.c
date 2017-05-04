@@ -8,8 +8,8 @@ int main(int argc, char *argv[]) {
     int xmax;
     int ymax;
     int i;
-    Direction *dir;
-    Status *stat;
+    Direction dir;
+    Status stat;
 
     Game *game;
 
