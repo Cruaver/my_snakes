@@ -26,7 +26,7 @@ int main() {
 
     while (true) {
         clear();
-        display_points(board->snake, ACS_BLOCK);
+        display_points(board->snake, ACS_CKBOARD);
         display_points(board->foods, ACS_DIAMOND);
         refresh();
         dir = get_next_move(dir);
