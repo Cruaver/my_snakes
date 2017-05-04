@@ -2,11 +2,12 @@
 #include "backend.h"
 #include "frontend.h"
 
-void display_points(PointList* snake, const chtype symbol) {
-    while(snake) {
+int display_points(PointList *snake, const chtype symbol) {
+    while (snake) {
         mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
+    return 0;
 }
 
 enum Direction get_next_move(enum Direction previous) {

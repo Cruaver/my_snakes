@@ -9,7 +9,7 @@ int main() {
     int ymax;
     enum Direction dir;
     enum Status status;
-    Board * board;
+    Board *board;
 
     initscr();
     cbreak();
@@ -24,7 +24,7 @@ int main() {
         add_new_food(board);
     }
 
-    while(true) {
+    while (true) {
         clear();
         display_points(board->snake, ACS_BLOCK);
         display_points(board->foods, ACS_DIAMOND);

@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-bool remove_from_list(PointList* elt, PointList** list) {
+int remove_from_list(PointList *elt, PointList **list) {
     PointList *currP, *prevP;
     prevP = NULL;
 
@@ -18,29 +18,29 @@ bool remove_from_list(PointList* elt, PointList** list) {
                 prevP->next = currP->next;
             }
             free(currP);
-            return true;
+            return 1;
         }
     }
-    return false;
+    return 0;
 }
 
-enum Status move_snake(Board* board, enum Direction dir) {
-    PointList* end;
-    PointList* beginning;
+enum Status move_snake(Board *board, enum Direction dir) {
+    PointList *end;
+    PointList *beginning;
 
     beginning = next_move(board, dir);
     if (beginning == NULL) {
         return FAILURE;
     }
-    if (board->snake->next && is_same_place(beginning, board->snake->next)) {
+    if (board->snake->next && is_same_place(beginning, board->snake->next) == 1) {
         beginning->next = NULL;
         free(beginning);
         return SUCCESS;
     }
-    if (list_contains(beginning, board->snake)) {
+    if (list_contains(beginning, board->snake) == 1) {
         return FAILURE;
     }
-    if (list_contains(beginning, board->foods)) {
+    if (list_contains(beginning, board->foods) == 1) {
         beginning->next = board->snake;
         board->snake = beginning;
         remove_from_list(beginning, &(board->foods));
@@ -51,7 +51,7 @@ enum Status move_snake(Board* board, enum Direction dir) {
     beginning->next = board->snake;
     board->snake = beginning;
     end = board->snake;
-    while(end->next->next) {
+    while (end->next->next) {
         end = end->next;
     }
     free(end->next);
@@ -60,16 +60,18 @@ enum Status move_snake(Board* board, enum Direction dir) {
     return SUCCESS;
 }
 
-bool is_same_place(PointList* cell1, PointList* cell2) {
-    return cell1->x == cell2->x && cell1->y == cell2->y;
+int is_same_place(PointList *cell1, PointList *cell2) {
+    if (cell1->x == cell2->x && cell1->y == cell2->y)
+        return 1;
+    return 0;
 }
 
 
-PointList* next_move(Board* board, enum Direction dir) {
-    PointList* snake = board->snake;
+PointList *next_move(Board *board, enum Direction dir) {
+    PointList *snake = board->snake;
     int new_x = snake->x;
     int new_y = snake->y;
-    switch(dir) {
+    switch (dir) {
         case UP:
             new_y = snake->y - 1;
             break;
@@ -90,40 +92,40 @@ PointList* next_move(Board* board, enum Direction dir) {
     }
 }
 
-PointList* create_random_cell(int xmax, int ymax) {
+PointList *create_random_cell(int xmax, int ymax) {
     return create_cell(rand() % xmax, rand() % ymax);
 }
 
-void add_new_food(Board* board) {
-    PointList* new_food;
+void add_new_food(Board *board) {
+    PointList *new_food;
     do {
         new_food = create_random_cell(board->xmax, board->ymax);
-    } while(list_contains(new_food, board->foods) || list_contains(new_food, board->snake));
+    } while (list_contains(new_food, board->foods) == 1 || list_contains(new_food, board->snake) == 1);
     new_food->next = board->foods;
     board->foods = new_food;
 }
 
-bool list_contains(PointList* cell, PointList* list) {
-    PointList* s = list;
+int list_contains(PointList *cell, PointList *list) {
+    PointList *s = list;
     while (s) {
-        if (is_same_place(s, cell)) {
-            return true;
+        if (is_same_place(s, cell) == 1) {
+            return 1;
         }
         s = s->next;
     }
-    return false;
+    return 0;
 }
 
-PointList* create_cell(int x, int y) {
-    PointList* cell = malloc(sizeof(*cell));
+PointList *create_cell(int x, int y) {
+    PointList *cell = malloc(sizeof(*cell));
     cell->x = x;
     cell->y = y;
     cell->next = NULL;
     return cell;
 }
 
-Board* create_board(PointList* snake, PointList* foods, int xmax, int ymax) {
-    Board* board = malloc(sizeof(*board));
+Board *create_board(PointList *snake, PointList *foods, int xmax, int ymax) {
+    Board *board = malloc(sizeof(*board));
     board->foods = foods;
     board->snake = snake;
     board->xmax = xmax;
@@ -131,9 +133,9 @@ Board* create_board(PointList* snake, PointList* foods, int xmax, int ymax) {
     return board;
 }
 
-PointList* create_snake() {
-    PointList* a = create_cell(2,3);
-    PointList* b = create_cell(2,2);
+PointList *create_snake() {
+    PointList *a = create_cell(2, 3);
+    PointList *b = create_cell(2, 2);
     a->next = b;
     return a;
 }
