@@ -3,20 +3,22 @@
 #include <ncurses.h>
 
 int main() {
+
+    int i;
+    int xmax;
+    int ymax;
+    enum Direction dir;
+    enum Status status;
+
     initscr();
     cbreak();
     noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(100);
-
-    int xmax;
-    int ymax;
     getmaxyx(stdscr, ymax, xmax);
-    enum Direction dir = RIGHT;
-
+    dir = RIGHT;
     Board * board = create_board(create_snake(), NULL, xmax, ymax);
-    int i;
     for (i = 0; i < 6; i++) {
         add_new_food(board);
     }
@@ -27,11 +29,11 @@ int main() {
         display_points(board->foods, ACS_DIAMOND);
         refresh();
         dir = get_next_move(dir);
-        enum Status status = move_snake(board, dir);
-        if (status == FAILURE) break;
+        status = move_snake(board, dir);
+        if (status == FAILURE)
+            break;
     }
     endwin();
-
     return 0;
 }
 
