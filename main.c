@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
 
     dir = RIGHT;
     game = create_game(create_snake(), NULL, xmax, ymax);
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 6; i++)
+    {
         add_new_food(game);
     }
 
@@ -33,8 +34,8 @@ int main(int argc, char *argv[]) {
         refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
-        if (status == FAILURE) break;
-
+        if (status == FAILURE)
+            break;
     }
     endwin();
     return 0;
