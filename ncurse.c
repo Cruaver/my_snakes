@@ -4,7 +4,6 @@
 
 void display_points(PointList *snake, const chtype symbol) {
     while (snake) {
-        wrefresh(boite);
         mvaddch(snake->y, snake->x, symbol);
         snake = snake->next;
     }
