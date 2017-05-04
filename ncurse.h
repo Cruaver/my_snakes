@@ -2,7 +2,7 @@
 # define NCURSE_H_
 
 #include <ncurses.h>
-#include <game.h>
+#include "game.h"
 
 
 char *get_next_move(Direction *dir);
