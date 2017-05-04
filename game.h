@@ -7,12 +7,17 @@ struct PointList {
     struct PointList *next;
 };
 
-typedef struct Direction {
-    char * direction;
-    char * previous;
+typedef struct PointList PointList;
+
+typedef struct {
+    char *direction;
+    char *previous;
 } Direction;
 
-typedef struct PointList PointList;
+typedef struct {
+    char *status;
+} Status;
+
 
 typedef struct {
     PointList *snake;
@@ -21,12 +26,11 @@ typedef struct {
     int ymax;
 } Game;
 
-
 int is_same_place(PointList *cell1, PointList *cell2);
 
-char * move_snake(Game *game, Direction * direction);
+char *move_snake(Game *game, Direction *direction);
 
-PointList *next_move(Game *game, Direction * direction);
+PointList *next_move(Game *game, Direction *direction);
 
 PointList *create_cell(int x, int y);
 
