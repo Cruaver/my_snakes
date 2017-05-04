@@ -11,17 +11,14 @@ int main(int argc, char *argv[]) {
     enum Direction dir;
     enum Status status;
     Game * game;
-    WINDOW * boite;
 
-
-    xmax = 10;
-    ymax = 10;
     initscr();
+    cbreak();
+    noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
     timeout(10);
-    boite = subwin(stdscr, xmax, ymax, 0, 0);
-    wborder(boite, '|', '|', '-', '-', '+', '+', '+', '+');
+    getmaxyx(stdscr, ymax, xmax);
 
     dir = RIGHT;
     game = create_game(create_snake(), NULL, xmax, ymax);
@@ -30,15 +27,17 @@ int main(int argc, char *argv[]) {
     }
 
     while (true) {
-        display_points(game->snake, ACS_BLOCK);
-        display_points(game->foods, ACS_DIAMOND);
-        wrefresh(boite);
+        clear();
+        display_points(game->snake, ACS_BLOCK, boite);
+        display_points(game->foods, ACS_DIAMOND, boite);
+        refresh();
         dir = get_next_move(dir);
         status = move_snake(game, dir);
-        if (status == FAILURE)
-            break;
+        if (status == FAILURE) break;
+
     }
     endwin();
     free(boite);
+
     return 0;
 }
